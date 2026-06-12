@@ -2,10 +2,10 @@ workflows:
   nexedit-android:
     name: NexEdit Studio X - Android Build
     max_build_duration: 60
-    instance_type: mac_mini_m2   # অথবা linux_x2
+    instance_type: mac_mini_m2
     environment:
       android_signing:
-        - my_keystore   # এটা পরে Codemagic-এ সেট করবেন
+        - my_keystore
       vars:
         PACKAGE_NAME: "com.aistudio.nexedit.studio.app"
     scripts:
@@ -15,11 +15,15 @@ workflows:
 
       - name: Build Release AAB
         script: |
-          ./gradlew bundleRelease
+          ./gradlew bundleRelease --stacktrace
+
+      - name: Build Release APK (optional)
+        script: |
+          ./gradlew assembleRelease --stacktrace
     artifacts:
       - app/build/outputs/bundle/release/*.aab
       - app/build/outputs/apk/release/*.apk
-    publishing:
-      # email: 
-      #   recipients:
-      #     - your@email.com
+    # publishing:   # এখনো কোনো publishing চান না তো এটা পুরোপুরি মন্তব্য করে রাখুন
+    #   google_play:
+    #     credentials: $GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS
+    #     track: internal
