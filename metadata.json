@@ -1,0 +1,6 @@
+{
+  "name": "NexEdit Studio X",
+  "description": "A fully-offline, professional-grade image editor with vintage filters, adjust controls, freehand drawings, crop, and undo/redo history.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
